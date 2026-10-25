@@ -16,6 +16,13 @@ export default defineConfig({
 			locales: {
 				root: { label: 'русский', lang: 'ru' },
 			},
+			social: [
+				{
+					icon: 'heart',
+					label: 'поддержать на boosty',
+					href: 'https://boosty.to/delmeers/donate',
+				},
+			],
 			customCss: ['@fontsource-variable/nunito', './src/styles/custom.css'],
 			sidebar: [
 				{ label: 'главная', link: '/' },

@@ -295,3 +295,22 @@ h3 {
 .sl-steps > li::after {
 	background-color: var(--sl-color-hairline-light) !important;
 }
+
+/* вторая кнопка на главной — тише основной */
+.ps-button--quiet {
+	background: transparent;
+	color: var(--sl-color-accent-high);
+	box-shadow: inset 0 0 0 2px var(--sl-color-accent);
+}
+.ps-button--quiet:hover {
+	color: var(--sl-color-accent-high);
+	background: var(--sl-color-accent-low);
+	transform: none;
+	box-shadow: inset 0 0 0 2px var(--sl-color-accent);
+}
+.ps-note {
+	max-width: 34rem;
+	margin: 1.25rem 0 0;
+	font-size: 0.95rem;
+	color: var(--sl-color-gray-3);
+}
