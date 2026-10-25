@@ -1,0 +1,10 @@
+{
+  "name": "pawsocks-site-deploy",
+  "private": true,
+  "scripts": {
+    "start": "sirv dist --host 0.0.0.0 --port ${PORT:-3000}"
+  },
+  "dependencies": {
+    "sirv-cli": "3.0.1"
+  }
+}
