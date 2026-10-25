@@ -1,15 +1,20 @@
 name: сборка сайта
 
+# хостингу не хватает памяти на astro build, поэтому сайт собирается здесь,
+# а готовая папка dist коммитится обратно в main. хостинг только раздаёт её.
+
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - 'dist/**'
   workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: deploy
+  group: build
   cancel-in-progress: true
 
 jobs:
@@ -33,20 +38,14 @@ jobs:
       - name: сборка
         run: pnpm build
 
-      - name: подготовка ветки deploy
+      - name: коммит готовой сборки
         run: |
-          mkdir -p out
-          cp -r dist out/dist
-          cp deploy-template/package.json out/package.json
-          cp deploy-template/pnpm-lock.yaml out/pnpm-lock.yaml
-          cp deploy-template/README.md out/README.md
-
-      - name: публикация в ветку deploy
-        run: |
-          cd out
-          git init -q -b deploy
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git commit -q -m "сборка ${GITHUB_SHA::7}"
-          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" deploy
+          git add -A dist
+          if git diff --cached --quiet; then
+            echo "сборка не изменилась"
+            exit 0
+          fi
+          git commit -q -m "сборка ${GITHUB_SHA::7} [skip ci]"
+          git push
