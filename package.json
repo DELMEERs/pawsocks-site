@@ -10,7 +10,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "start": "sirv dist --host 0.0.0.0 --port ${PORT:-3000}"
+    "start": "sirv dist --host 0.0.0.0 --port ${PORT:-${SERVER_PORT:-10270}}"
   },
   "dependencies": {
     "@astrojs/starlight": "0.42.7",

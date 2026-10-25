@@ -8,7 +8,7 @@
 pnpm install
 pnpm dev      # локально с горячей перезагрузкой
 pnpm build    # собрать сайт в dist
-pnpm start    # раздать готовый dist на $PORT (по умолчанию 3000)
+pnpm start    # раздать готовый dist на $PORT или $SERVER_PORT (панель hyprr)
 ```
 
 на хостинге сайт не собирается — не хватает памяти. после каждого пуша в `main`
