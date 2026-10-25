@@ -1,0 +1,297 @@
+/* ------------------------------------------------------------------
+   pawsocks — палитра и типографика поверх starlight
+   navy #0E1630 · pink #E6457F · light pink #FF9CC2 · stripes #F4F1FA
+   ------------------------------------------------------------------ */
+
+:root {
+	--ps-navy: #0e1630;
+	--ps-navy-2: #1c2a55;
+	--ps-pink: #e6457f;
+	--ps-pink-light: #ff9cc2;
+	--ps-pink-deep: #a8215a;
+	--ps-cream: #f4f1fa;
+	--ps-muted: #8a84a0;
+
+	/* вторая полоска резинки гольфа */
+	--ps-stripe-2: var(--ps-cream);
+
+	/* место под полоску-резинку над шапкой */
+	--sl-nav-height: calc(3.5rem + 6px);
+
+	--sl-font: 'Nunito Variable', 'Nunito', system-ui, sans-serif;
+	--sl-text-h1: 2.75rem;
+	--sl-line-height-headings: 1.15;
+
+	/* тёмная тема — основная */
+	--sl-color-white: #f4f1fa;
+	--sl-color-gray-1: #e9e5f2;
+	--sl-color-gray-2: #c9c3d9;
+	--sl-color-gray-3: #8a84a0;
+	--sl-color-gray-4: #5a6390;
+	--sl-color-gray-5: #2c3a68;
+	--sl-color-gray-6: #16224a;
+	--sl-color-black: #0e1630;
+
+	--sl-color-accent-low: #4a1f40;
+	--sl-color-accent: #e6457f;
+	--sl-color-accent-high: #ff9cc2;
+
+	--sl-color-bg-nav: #0e1630;
+	--sl-color-bg-sidebar: #0e1630;
+	--sl-color-hairline-light: #2c3a68;
+	--sl-color-hairline: #1c2a55;
+}
+
+:root[data-theme='light'] {
+	--ps-stripe-2: var(--ps-navy);
+
+	--sl-color-white: #0e1630;
+	--sl-color-gray-1: #1c2a55;
+	--sl-color-gray-2: #34406e;
+	--sl-color-gray-3: #5d6690;
+	--sl-color-gray-4: #8a84a0;
+	--sl-color-gray-5: #d6d1e4;
+	--sl-color-gray-6: #ece8f4;
+	--sl-color-gray-7: #f6f4fa;
+	--sl-color-black: #fcfbfe;
+
+	--sl-color-accent-low: #fbe0ea;
+	--sl-color-accent: #c93469;
+	--sl-color-accent-high: #a8215a;
+
+	--sl-color-bg-nav: #fcfbfe;
+	--sl-color-bg-sidebar: #fcfbfe;
+	--sl-color-hairline-light: #d6d1e4;
+	--sl-color-hairline: #ece8f4;
+}
+
+/* полоска-резинка по верху каждой страницы */
+.header::before {
+	content: '';
+	position: absolute;
+	inset: 0 0 auto 0;
+	height: 6px;
+	background: repeating-linear-gradient(
+		90deg,
+		var(--ps-pink) 0 22px,
+		var(--ps-stripe-2) 22px 34px
+	);
+}
+.header {
+	padding-top: calc(var(--sl-nav-pad-y) + 6px);
+}
+@media (min-width: 50rem) {
+	:root {
+		--sl-nav-height: calc(4rem + 6px);
+	}
+}
+
+/* на главной заголовок страницы заменяет вордмарк */
+main:has(.ps-hero) > .content-panel:first-child {
+	display: none;
+}
+main:has(.ps-hero) > .content-panel:nth-child(2) {
+	border-top: 0;
+}
+
+.site-title {
+	font-weight: 900;
+	font-size: 1.35rem;
+	letter-spacing: -0.02em;
+	color: var(--sl-color-white);
+}
+.site-title img {
+	height: 1.6rem;
+	width: auto;
+}
+
+h1,
+h2,
+h3 {
+	font-weight: 900;
+	letter-spacing: -0.02em;
+}
+
+.sl-markdown-content {
+	font-size: 1.0625rem;
+	line-height: 1.7;
+	max-width: 42rem;
+}
+
+/* ------------------------------ главная ------------------------------ */
+
+.ps-hero {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto;
+	align-items: end;
+	gap: 2rem;
+	padding: clamp(2rem, 6vw, 5rem) 0 clamp(1.5rem, 4vw, 3rem);
+}
+
+.ps-wordmark {
+	margin: 0;
+	font-weight: 950;
+	font-size: clamp(4.5rem, 17vw, 11rem);
+	line-height: 0.82;
+	letter-spacing: -0.055em;
+	color: var(--ps-pink);
+}
+.ps-wordmark span {
+	display: block;
+}
+.ps-wordmark .ps-socks {
+	background: repeating-linear-gradient(
+		180deg,
+		var(--ps-pink) 0 0.16em,
+		var(--ps-stripe-2) 0.16em 0.27em
+	);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
+
+.ps-paw {
+	width: clamp(5rem, 16vw, 10rem);
+	height: auto;
+	margin-bottom: 0.4rem;
+	transform: rotate(14deg);
+	animation: ps-step 900ms cubic-bezier(0.2, 0.9, 0.3, 1.3) both;
+}
+@keyframes ps-step {
+	from {
+		opacity: 0;
+		transform: translateY(1.5rem) rotate(-8deg) scale(0.8);
+	}
+	to {
+		opacity: 1;
+		transform: rotate(14deg);
+	}
+}
+@media (prefers-reduced-motion: reduce) {
+	.ps-paw {
+		animation: none;
+	}
+}
+
+.ps-lead {
+	max-width: 34rem;
+	margin: 0 0 2rem;
+	font-size: clamp(1.15rem, 2.2vw, 1.4rem);
+	line-height: 1.5;
+	color: var(--sl-color-gray-2);
+}
+
+.ps-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.75rem;
+	margin: 0;
+}
+.ps-button {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.85rem 1.6rem;
+	border-radius: 999px;
+	font-weight: 800;
+	font-size: 1.05rem;
+	text-decoration: none;
+	background: var(--ps-pink);
+	color: #fff;
+	box-shadow: 0 4px 0 var(--ps-pink-deep);
+	transition: transform 120ms ease, box-shadow 120ms ease;
+}
+.ps-button:hover {
+	color: #fff;
+	transform: translateY(2px);
+	box-shadow: 0 2px 0 var(--ps-pink-deep);
+}
+.ps-button:focus-visible {
+	outline: 3px solid var(--ps-pink-light);
+	outline-offset: 3px;
+}
+
+.ps-facts {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem 1.75rem;
+	margin: 2.5rem 0 0;
+	padding: 1.25rem 0 0;
+	border-top: 2px dashed var(--sl-color-hairline-light);
+	list-style: none;
+	color: var(--sl-color-gray-3);
+	font-weight: 700;
+}
+.ps-facts li {
+	margin: 0;
+}
+.ps-facts b {
+	color: var(--sl-color-white);
+	font-weight: 900;
+}
+
+@media (max-width: 40rem) {
+	.ps-hero {
+		grid-template-columns: 1fr;
+	}
+	.ps-paw {
+		order: -1;
+	}
+}
+
+/* --------------------------- страница правил -------------------------- */
+
+.ps-rules ol {
+	list-style: none;
+	padding-left: 0;
+	counter-reset: rule;
+}
+.ps-rules ol > li {
+	position: relative;
+	padding-left: 3.25rem;
+	margin-top: 0.9rem;
+	counter-increment: rule;
+}
+.ps-rules ol > li::before {
+	content: attr(data-n);
+	position: absolute;
+	left: 0;
+	top: 0.05rem;
+	min-width: 2.4rem;
+	padding: 0.05rem 0.4rem;
+	border-radius: 0.5rem;
+	background: var(--sl-color-accent-low);
+	color: var(--sl-color-accent-high);
+	font-weight: 900;
+	font-size: 0.9rem;
+	text-align: center;
+	font-variant-numeric: tabular-nums;
+}
+
+/* ---------------------- плашки и шаги в палитре ---------------------- */
+
+.starlight-aside--tip {
+	--sl-color-asides-text-accent: var(--sl-color-accent-high);
+	--sl-color-asides-border: var(--sl-color-accent);
+	background-color: var(--sl-color-accent-low);
+}
+.starlight-aside--caution {
+	--sl-color-asides-text-accent: #ffd2a8;
+	--sl-color-asides-border: #f0a35e;
+	background-color: #2e2440;
+}
+:root[data-theme='light'] .starlight-aside--caution {
+	--sl-color-asides-text-accent: #8a4a10;
+	background-color: #fff1e4;
+}
+
+.sl-steps > li::before {
+	background-color: var(--sl-color-accent-low) !important;
+	color: var(--sl-color-accent-high) !important;
+	box-shadow: none !important;
+	font-weight: 900;
+}
+.sl-steps > li::after {
+	background-color: var(--sl-color-hairline-light) !important;
+}

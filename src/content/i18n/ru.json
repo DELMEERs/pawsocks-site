@@ -1,0 +1,23 @@
+{
+	"skipLink.label": "перейти к содержимому",
+	"search.label": "поиск",
+	"search.cancelLabel": "отменить",
+	"themeSelect.accessibleLabel": "выбери тему",
+	"themeSelect.dark": "тёмная",
+	"themeSelect.light": "светлая",
+	"themeSelect.auto": "авто",
+	"menuButton.accessibleLabel": "меню",
+	"sidebarNav.accessibleLabel": "основное",
+	"tableOfContents.onThisPage": "на этой странице",
+	"tableOfContents.overview": "обзор",
+	"page.previousLink": "назад",
+	"page.nextLink": "дальше",
+	"404.text": "такой страницы нет. проверь адрес или вернись на главную.",
+	"aside.note": "заметка",
+	"aside.tip": "совет",
+	"aside.caution": "внимание",
+	"aside.danger": "важно",
+	"expressiveCode.copyButtonCopied": "скопировано!",
+	"expressiveCode.copyButtonTooltip": "копировать",
+	"builtWithStarlight.label": "сделано на starlight"
+}
