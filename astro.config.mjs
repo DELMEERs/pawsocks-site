@@ -26,7 +26,9 @@ export default defineConfig({
 			customCss: ['@fontsource-variable/nunito', './src/styles/custom.css'],
 			sidebar: [
 				{ label: 'главная', link: '/' },
+				{ label: 'как вступить?', link: '/join/' },
 				{ label: 'правила', link: '/rules/' },
+				{ label: 'уникальные фишки', link: '/features/' },
 			],
 			pagination: false,
 			lastUpdated: false,
