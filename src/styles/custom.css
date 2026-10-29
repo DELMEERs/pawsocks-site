@@ -280,3 +280,31 @@ h3 {
 	transform: none;
 	box-shadow: inset 0 0 0 2px var(--sl-color-accent);
 }
+
+/* --------------------- сетка крафта на странице фишек --------------------- */
+
+.ps-craft {
+	display: grid;
+	grid-template-columns: repeat(3, 4.5rem);
+	gap: 0.3rem;
+	width: max-content;
+	margin: 1rem 0;
+	padding: 0.5rem;
+	border-radius: 0.75rem;
+	background: var(--sl-color-gray-6);
+}
+.ps-craft span {
+	display: grid;
+	place-items: center;
+	height: 3rem;
+	border-radius: 0.4rem;
+	background: var(--sl-color-black);
+	color: var(--sl-color-gray-2);
+	font-size: 0.8rem;
+	font-weight: 700;
+	text-align: center;
+	line-height: 1.1;
+}
+.ps-craft span:empty {
+	opacity: 0.55;
+}
